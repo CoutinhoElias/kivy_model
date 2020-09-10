@@ -3,12 +3,12 @@ from kivymd.app import MDApp
 from kivy.factory import Factory
 from menu import ItemWidget
 
+import screens.login
+import screens.home
+import screens.info
 
 Builder.load_string(
 '''
-#: import LoginScreen screens.login
-#: import HomeScreen screens.home
-#: import InfoScreen screens.info
 #: import ContentDrawer menu
 
 <RootWidget@Screen>:

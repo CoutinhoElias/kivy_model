@@ -1,4 +1,3 @@
-
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
@@ -32,23 +31,23 @@ class InfoScreen(Screen):
 
     def on_enter(self):
         url = 'https://covid19-brazil-api.now.sh/api/report/v1'
-
+    
         response = requests.get(url)
         status_code = response.status_code
         content_json = response.json()
         #print(json.dumps(content_json['data'], indent=4))
-
+    
         i=0
         app = MDApp.get_running_app()
         print(app.root.ids, '<<<<<========')
         list_states = app.root.ids.information_screen.ids.list_states
-
+    
         for state in content_json['data']:
             items = ThreeLineIconListItem(text=content_json['data'][i]['state'], 
                                           secondary_text='Casos de COVID-19: ' + str(content_json['data'][i]['cases']), 
                                           tertiary_text='Casos suspeitos: ' + str(content_json['data'][i]['suspects']))
             list_states.add_widget(items)
-
+    
             i+=1
     pass        
 
